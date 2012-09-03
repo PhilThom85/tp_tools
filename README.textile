@@ -1,0 +1,55 @@
+tp_tools
+========
+
+Tools to develop easily in ror
+
+h2. method foxy_equ
+
+This method helps to assign a value ore more to one or more variables with several friendly options. The goal of this method is to write
+less code for assignment when default value or conditions are necessary.
+
+h3. default behaviour
+
+Assigning a variable by default is:
+
+<pre><code>
+  my_variable = foxy_equ cur_variable, default_value
+</code></pre>
+
+Where:
+  my_variable: new variable
+  cur_variable: current value we want to assign to my_variable
+  default_value: (optionnal) the default value assigned when cur_variable is nil. When not given, foxy_equ behaves like normal assignment.
+
+h3. extended behaviour
+
+h4. multi assignment
+
+This feature is useful to assign multi variables using same logic as single assignment but in one line:
+
+<pre><code>
+  v1, v2, v3 = foxy_equ [o1, o2, o3], default_value
+</code></pre>
+
+This will assign values from o1,o2,o3 to v1,v2,v3 except if default_value is given and one the o{n} value is nil default_value is returned.
+This previous code is equivalent to:
+
+<pre><code>
+  v1 = o1.nil? default_value : o1
+  v2 = o2.nil? default_value : o2
+  v3 = o3.nil? default_value : o3
+</code></pre>
+
+h4. Refering an array
+
+Sometimes variables need to be assigned from an array (usually hash options) and should have the behaviour done with foxy_equ.
+foxy_equ helps to simplify this task as followed:
+
+<pre><code>
+  referred_array = { :origin1 => o1, :origin2 => o2, :origin3 => o3 }
+  v1, v2, v3 = foxy_equ [:origin1, :origin2, :origin3], :default => default_value, :array => referred_array
+</code></pre>
+
+Previous code will assign o1,o2,o3 to v1,v2,v3 using default_value if one of the o{n} value is nil. If a key miss in array, default_value is 
+returned.
+
