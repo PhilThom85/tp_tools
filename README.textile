@@ -49,6 +49,5 @@ foxy_equ helps to simplify this task as followed:
   v1, v2, v3 = foxy_equ [:origin1, :origin2, :origin3], :default => default_value, :array => referred_array
 </code></pre>
 
-Previous code will assign o1,o2,o3 to v1,v2,v3 using default_value if one of the o{n} value is nil. If a key is missing inside the array, default_value is 
-returned.
+Previous code will assign o1,o2,o3 to v1,v2,v3 using default_value if one of the o{n} value is nil. If a key is missing inside the array, default_value i returned.
 
