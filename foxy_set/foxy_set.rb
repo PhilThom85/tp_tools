@@ -1,4 +1,4 @@
-def foxy_equ(value=nil, options = nil)
+def foxy_set(value=nil, options = nil)
   if options.is_a? Hash
     default = options[:default]
     local_array = options.delete(:array)
@@ -11,11 +11,11 @@ def foxy_equ(value=nil, options = nil)
     if local_array
       new_arg = []
       value.each { |key| new_arg << local_array[key] }
-      foxy_equ(new_arg, options)
+      foxy_set(new_arg, options)
     else
       if value.is_a? Array
         array_result = []
-        value.each { |val| array_result << foxy_equ( val, options ) }
+        value.each { |val| array_result << foxy_set( val, options ) }
         array_result
       else
         value
